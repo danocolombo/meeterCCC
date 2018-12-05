@@ -61,15 +61,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<!-- [content] -->
 	<section id="content">
 		<form id="login" method="post">
-                    <center>
-                    <fieldset style="width: 400px;">
+                    <div class="loginBox">
+                    <fieldset style="width: 250px;">
                         <legend>&nbsp;Meeter Web Application&nbsp;</legend>
+                        <div class="loginText">
                     <p><label for="username">Username:</label><input id="username" name="username" type="text" required></p>
                     <p><label for="password">Password:</label><input id="password" name="password" type="password" required></p>					
                        <p><input type="submit" value="Login"></p>
-
+					</div>
                     </fieldset>
-                    </center>
+                    </div>
                     
                     
                     <!--
@@ -83,18 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		</form>
 	</section>
 	<!-- [/content] -->
-	<!--
-	<footer id="footer">
-		<details>
-			<summary>Copyright 2013</summary>
-                        <p><a href="http://www.developerdrive.com/2013/05/creating-a-simple-to-do-application-%E2%80%93-part-3/" target="_new">created from this tutorial</a></p>
-			<p>Jonathan Schnittger. All Rights Reserved.</p>
-		</details>
-	</footer>
-        -->
-        //<?php
-//            return file_get_contents("pageBottom.txt");
-//        ?>
 </div>
     
 <!-- </body>

@@ -93,3 +93,9 @@ td.alt{
 .btnCancel {
 	font-size: 2em;
 }
+div.loginBox {
+	float: center;
+}
+div.loginText {
+	text-align:center;
+}
