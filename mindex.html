@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1" />
+		<title>Meeter Web Application</title>
+        <link rel="stylesheet" type="text/css" href="css/screen_styles.css" />
+        <link rel="stylesheet" type="text/css" href="css/screen_layout_large.css" />
+        <link rel="stylesheet" type="text/css" media="only screen and (min-width:50px) and (max-width:500px)"   href="css/screen_layout_small.css">
+        <link rel="stylesheet" type="text/css" media="only screen and (min-width:501px) and (max-width:800px)"  href="css/screen_layout_medium.css">
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head> 
+    <body>
+		<div class="page">
+			<header>
+				<a class="logo" title="home" href="index.php"><span></span></a>
+			</header>
+			<nav>
+				<a href="meetings.php">Meetings</a>
+				<a href="people.php">People</a>
+				<a href="teams.php">Teams</a>
+				<a href="leadership.php">Leadership</a>
+				<a href="reportlist.php">Reporting</a>
+				<a href="#">ADMIN</a>
+				<a href="logout.php">[ LOGOUT ]</a>
+			</nav>
+			<article>
+			<form id='frmPeople-Add'>
+				<center><h2>CR Personnel Form</h2></center>
+				<center>
+					<table border='0'>
+						<tr>
+							<td align='right'>First Name:</td>
+							<td><input type='text' name='peepFName' size='15' value='' /></td>
+						</tr>
+						<tr>
+							<td align='right'>Last Name:</td>
+							<td><input type='text' name='peepLName' size='15' value='' /></td>
+						</tr>
+						<tr>
+							<td align='right'>Address:</td>
+							<td><input type='text' name='peepAddress' size='25' value='' /></td>
+						</tr>
+						<tr>
+							<td align='right'>City:</td>
+							<td><input type='text' name='peepCity' size='15' value='' />
+						<tr>
+							<td align='right'>State:</td>
+							<td><input type='text' name='peepState' size='2' value='' />
+						<tr>
+							<td align='right'>Zipcode:</td>
+							<td><input type='text' name='peepZipcode' size='25' value='' /></td>
+						</tr>
+						<tr>
+							<td align='right'>Phone 1:</td>
+							<td><input type='text' name='peepPhone1' size='15' value='' /></td>
+						</tr>
+						<tr>
+							<td align='right'>Phone 2:</td>
+							<td><input type='text' name='peepPhone2' size='15' value='' /></td>
+						</tr>
+						<tr>
+							<td align='right'>Email 1:</td>
+							<td><input type='text' name='peepEmail1' size='40' value='' /></td>
+						</tr>
+						<tr>
+							<td align='right'>Email 2:</td>
+							<td><input type='text' name='peepEmail2' size='40' value='' /></td>
+						</tr>
+						<tr>
+							<td align='right'>Spiritual Gifts:</td>
+							<td><textarea name='peepSpiritualGifts' cols='40' rows='2'></textarea></td>
+						</tr>
+						<tr>
+							<td align='right'>Recovery Area:</td>
+							<td><textarea name='peepRecoveryArea' cols='40' rows='2'></textarea></td>
+						</tr>
+						<tr>
+							<td align='right'>Recovery Since:</td>
+							<td><input type='text' name='peepRecoverySince' size='15'
+								value='' /></td>
+						</tr>
+						<tr>
+							<td align='right'>CR Since:&nbsp;</td>
+							<td><input type='text' name='peepCRSince' size='15' value='' /></td>
+						</tr>
+						<tr>
+							<td align='right'>Covenant Date:&nbsp;</td>
+							<td><input type='text' name='peepCovenant' size='15'
+								value='' /></td>
+						</tr>
+						<tr>
+							<td align='right'>Areas Served:</td>
+							<td><textarea name='peepAreasServed' cols='40' rows='4'></textarea></td>
+						</tr>
+						<tr>
+							<td align='right'>Joy Areas:</td>
+							<td><textarea name='peepJoyAreas' cols='40' rows='4'></textarea></td>
+						</tr>
+						<tr>
+							<td align='right'>Reasons To Serve:</td>
+							<td><textarea name='peepReasonsToServe' cols='40' rows='5'></textarea></td>
+						</tr>
+					</table>
+					<table border="0">
+						<tr>
+							<td colspan='3'></td>
+						</tr>
+						<tr>
+							<td valign='top'><table border='3'>
+									<tr>
+										<td><table border='0'>
+												<tr>
+													<td colspan='2' align='center'><strong>Areas
+															of Interest</strong></td>
+												</tr>
+												<tr>
+													<td align='right'>Fellowship Team (setup, snacks,
+														etc.):&nbsp;</td>
+													<td><input type='checkbox' name='peepFellowshipTeam'
+														id='peepFellowshipTeam' checked>&nbsp;</td>
+												</tr>
+												<tr>
+													<td align='right'>Teaching Team:&nbsp;</td>
+													<td><input type='checkbox' name='peepTeachingTeam'
+														id='peepTeachingTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Prayer Team:</td>
+													<td><input type='checkbox' name='peepPrayerTeam'
+														id='peepPrayerTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Newcomers Team:</td>
+													<td><input type='checkbox' name='peepNewcomersTeam'
+														id='peepNewcomersTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Greeting Team:</td>
+													<td><input type='checkbox' name='peepGreetingTeam'
+														id='peepGreetingTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Special Events Team:</td>
+													<td><input type='checkbox'
+														name='peepSpecialEventsTeam' id='peepSpecialEventsTeam'
+														checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Resource Team:</td>
+													<td><input type='checkbox' name='peepResourceTeam'
+														id='peepResourceTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Small Group Team:</td>
+													<td><input type='checkbox' name='peepSmallGroupTeam'
+														id='peepSmallGroupTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Step Study Team:</td>
+													<td><input type='checkbox' name='peepStepStudyTeam'
+														id='peepStepStudyTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Transportation Team:</td>
+													<td><input type='checkbox'
+														name='peepTransportationTeam' id='peepTransportationTeam'
+														checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Worship Team:</td>
+													<td><input type='checkbox' name='peepWorshipTeam'
+														id='peepWorshipTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Landing Team:</td>
+													<td><input type='checkbox' name='peepLandingTeam'
+														id='peepLandingTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Celebration Place Team:</td>
+													<td><input type='checkbox'
+														name='peepCelebrationPlaceTeam'
+														id='peepCelebrationPlaceTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Crosstalk Cafe Team:</td>
+													<td><input type='checkbox' name='peepSolidRockTeam'
+														id='peepSolidRockTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Meal Team:</td>
+													<td><input type='checkbox' name='peepMealTeam'
+														id='peepMealTeam' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>Chips:&nbsp;</td>
+													<td><input type='checkbox' name='peepChips'
+														id='peepChips' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>CRI: Men:</td>
+													<td><input type='checkbox' name='peepCRImen'
+														id='peepCRImen' checked></td>
+												</tr>
+												<tr>
+													<td align='right'>CRI: Women:</td>
+													<td><input type='checkbox' name='peepCRIwomen'
+														id='peepCRIwomen' checked></td>
+												</tr>
+											</table></td>
+									</tr>
+								</table></td>
+							<td></td>
+							<td valign='top'><table border='4'>
+									<tr>
+										<td><table>
+												<tr>
+													<td align='center'><strong>CR Leader
+															Participation</strong></td>
+												</tr>
+											</table></td>
+									</tr>
+								</table></td>
+						</tr>
+					</table>
+					<br />
+					<table>
+						<tr>
+							<td align='right'>Notes:</td>
+							<td><textarea name='peepNotes' cols='40' rows='5'></textarea></td>
+						</tr>
+						<tr>
+							<td align='right'>Active:</td>
+							<td><input id='cb-active-user' type='checkbox' name='peepActive' checked></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+							<input type='submit' value='Okay' id='btn-people'></td>
+						</tr>
+					</table>
+				</center></form></article>
+	<footer> &copy; 2013-2018 Rogue Intelligence </footer>
+</div>
+<script src="js/mscript.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1" />
+		<title>Meeter Web Application</title>
+        <link rel="stylesheet" type="text/css" href="css/screen_styles.css" />
+        <link rel="stylesheet" type="text/css" href="css/screen_layout_large.css" />
+        <link rel="stylesheet" type="text/css" media="only screen and (min-width:50px) and (max-width:500px)"   href="css/screen_layout_small.css">
+        <link rel="stylesheet" type="text/css" media="only screen and (min-width:501px) and (max-width:800px)"  href="css/screen_layout_medium.css">
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script type="text/javascript">
+			function validateForm(){
+				var x = document.forms["peepForm"]["peepFName"].value;
+				if (x == ""){
+					alert("Name is required.");
+					var elem = document.getElementByID("FName");
+					elem.focus();
+					elem.select();
+					return false;
+				}else{
+					//now depending on the button value, we will take action.
+					var b = document.getElementById("submitButton").value;
+					if (b == "add"){
+						document.getElementById("peepForm").submit();
+						return true;
+					}else if(b == "update"){
+						document.getElementById("peepForm").submit();
+						return true;
+					}
+				}
+			}
+			function ExitPeopleForm(){
+				// lets go back to the people list
+				window.location.href='people.php';
+						return true;
+			}
+			function validateDeleteUser(){
+				// if user is trying to delete system user "Removed User", then echo message that
+				// action is not possible. 
+				//--------------------------------------------------------------------------------
+				var FName = document.forms["peepForm"]["peepFName"].value;
+				var LName = document.forms["peepForm"]["peepLName"].value;
+				if(FName == "Removed" && LName == "User"){
+					// user is trying to delete system entry. Post warning and abort
+					alert("The entry you are trying to delete is used by the system, and can\'t be removed");
+					return false;
+				}
+				//check if the current user is set to active
+				var aFlag = document.getElementById("peepActive").checked;
+				if(aFlag == true){
+					alert("It is recommended you make the person \'inactive\' rather than deleting.");
+					var x = confirm("Press OK if you want to really delete. All references in the system will be lost");
+					if (x == true){
+						var recordID = getUrlVars()["PID"];
+						var newURL = "peepDelete.php?Action=DeletePeep&PID=" + recordID;
+						window.location.href=newURL;
+						return true;	
+					}else{
+						return false;
+					}
+				}
+				var x2 = confirm("Click \'OK\' if you are sure you want to delete this user.");
+				if (x2 == true){
+					var recordID = getUrlVars()["PID"];
+					//alert(recordID);
+					//alert("DELETE");
+					var dest = "peepDelete.php?Action=DeletePeep&PID=" + recordID;
+					window.location.href=dest;
+				}else{
+					alert("Delete User aborted.");
+					return false;
+				}
+			}
+			function getUrlVars() {
+			    var vars = {};
+			    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+			        vars[key] = value;
+			    });
+			    return vars;
+			}
+        </script>
+    </head> 
+    <body>
+		<div class="page">
+			<header>
+				<a class="logo" title="home" href="index.php"><span></span></a>
+			</header>
+			<nav>
+				<a href="meetings.php">Meetings</a>
+				<a href="people.php">People</a>
+				<a href="teams.php">Teams</a>
+				<a href="leadership.php">Leadership</a>
+				<a href="reportlist.php">Reporting</a>
+				<a href="#">ADMIN</a>
+				<a href="logout.php">[ LOGOUT ]</a>
+			</nav>
+			<article>
+<form id='peepForm' action='peepAction.php?Action=Update&PID=1' method='post'><center><h2>CR Personnel Form</h2></center><center><table border='0'><tr><td align='right'>First Name:</td><td><input type='text' id='peepFName' name='peepFName' size='15' value='Dano'/></td></tr><tr><td align='right'>Last Name:</td><td><input type='text' id='peepLName' name='peepLName' size='15' value='Colombo'/></td></tr><tr><td align='right'>Address:</td><td><input type='text' id='peepAddress' name='peepAddress' size='25' value='2304 Leah Dr.'/></td></tr><tr><td align='right'>City:</td><td><input type='text' id='peepCity' name='peepCity' size='15' value='Columbus'/> <tr><td align='right'>State:</td><td><input type='text' id='peepState' name='peepState' size='2' value='GA'/><tr><td align='right'>Zipcode:</td><td><input type='text' id='peepZipcode' name='peepZipcode' size='25' value='31909'/></td></tr><tr><td align='right'>Phone 1:</td><td><input type='text' id='peepPhone1' name='peepPhone1' size='15' value='(706) 604-2494'/></td></tr><tr><td align='right'>Phone 2:</td><td><input type='text' id='peepPhone2' name='peepPhone2' size='15' value=''/></td></tr><tr><td align='right'>Email 1:</td><td><input type='text' id=peepEmail1' name='peepEmail1' size='40' value='dano@dcolombo.com'/></td></tr><tr><td align='right'>Email 2:</td><td><input type='text' id='peepEmail2' name='peepEmail2' size='40' value='gacrleader@gmail.com'/></td></tr><tr><td align='right'>Spiritual Gifts:</td><td><textarea id='peepSpiritualGifts' name='peepSpiritualGifts' cols='40' rows='2'>leadership</textarea></td></tr><tr><td align='right'>Recovery Area:</td><td><textarea id='peepRecoveryArea' name='peepRecoveryArea' cols='40' rows='2'>Childhood Abandonment, chemical addiction, finances</textarea></td></tr><tr><td align='right'>Recovery Since:</td><td><input type='text' id='peepRecoverySince' name='peepRecoverySince' size='15' value='2007'/></td></tr><tr><td align='right'>CR Since:&nbsp;</td><td><input type='text' id='peepCRSince' name='peepCRSince' size='15' value='2007'/></td></tr><tr><td align='right'>Covenant Date:&nbsp;</td><td><input type='text' name='peepCovenant' size='15' value='2/21/2018 '/></td></tr><tr><td align='right'>Areas Served:</td><td><textarea id='peepAreasServed' name='peepAreasServed' cols='40' rows='4'></textarea></td></tr><tr><td align='right'>Joy Areas:</td><td><textarea id='peepJoyAreas' name='peepJoyAreas' cols='40' rows='4'></textarea></td></tr><tr><td align='right'>Reasons To Serve:</td><td><textarea peepReasonsToServe' name='peepReasonsToServe' cols='40' rows='5'></textarea></td></tr></table><table border='0'><tr><td colspan='3'></td></tr><tr><td valign='top'><table border='3'><tr><td><table border='0'><tr><td colspan='2' align='center'><strong>Areas of Interest</strong></td></tr><tr><td align='right'>Fellowship Team (setup, snacks,...):&nbsp;</td><td><input type='checkbox' id='peepFellowshipTeam' name='peepFellowshipTeam'>&nbsp;</td></tr><tr><td align='right'>Teaching Team:&nbsp;</td><td><input type='checkbox' id='peepTeachingTeam' id='peepTeachingTeam' name='peepTeachingTeam'>&nbsp;</td></tr><tr><td align='right'>Prayer Team: </td><td><input type='checkbox' id='peepPrayerTeam' name='peepPrayerTeam'></td></tr><tr><td align='right'>Newcomers Team: </td><td><input type='checkbox' id='peepNewcomersTeam' name='peepNewcomersTeam' checked></td></tr><tr><td align='right'>Greeting Team: </td><td><input type='checkbox' id='peepGreetingTeam' name='peepGreetingTeam'></td></tr><tr><td align='right'>Special Events Team: </td><td><input type='checkbox' id='peepSpecialEventsTeam' name='peepSpecialEventsTeam'></td></tr><tr><td align='right'>Resource Team: </td><td><input type='checkbox' id='peepResourceTeam' name='peepResourceTeam'></td></tr><tr><td align='right'>Small Group Team: </td><td><input type='checkbox' id='peepSmallGroupTeam' name='peepSmallGroupTeam' checked></td></tr><tr><td align='right'>Step Study Team: </td><td><input type='checkbox' id='peepStepStudyTeam' name='peepStepStudyTeam' checked></td></tr><tr><td align='right'>Transportation Team: </td><td><input type='checkbox' id='peepTransportationTeam' name='peepTransportationTeam'></td></tr><tr><td align='right'>Worship Team: </td><td><input type='checkbox' id='peepWorshipTeam' name='peepWorshipTeam'></td></tr><tr><td align='right'>Landing Team: </td><td><input type='checkbox' id='peepLandingTeam' name='peepLandingTeam'></td></tr><tr><td align='right'>Celebration Place Team: </td><td><input type='checkbox' id='peepCelebrationPlaceTeam' name='peepCelebrationPlaceTeam'></td></tr><tr><td align='right'>Crosstalk Cafe Team: </td><td><input type='checkbox' id='peepSolidRockTeam' name='peepSolidRockTeam'></td></tr><tr><td align='right'>Meal Team:</td><td><input type='checkbox' id='peepMealTeam' name='peepMealTeam'></td></tr><tr><td align='right'>Chips:&nbsp;</td><td><input type='checkbox' id='peepChips' name='peepChips' checked></td></tr><tr><td align='right'>CRI: Men:</td><td><input type='checkbox' id='peepCRImen' name='peepCRImen'></td></tr><tr><td align='right'>CRI: Women:</td><td><input type='checkbox' id='peepCRIwomen' name='peepCRIwomen'></td></tr><tr><td aiign='right'><button type='button' id='selectBtn' onclick='SelectAllInterests()'>Check All</button>&nbsp;&nbsp;
+        <button type='button' id='selectBtn' onclick='SelectNoInterests()'>Clear All</button></td></tr></table></td></tr></table></td><td></td><td valign='top'><table border='4'><tr><td><table><tr><td align='center'><strong>CR Leader Participation</strong></td></tr></table></td></tr></table></td></tr></table><br/><table><tr><td align='right'>Notes:</td><td><textarea id='peepNotes' name='peepNotes' cols='40' rows='5'></textarea></td></tr><tr><td align='right'>Active:</td><td><input type='checkbox' id='peepActive' name='peepActive' checked></td></tr></table></center><div align='center'><br/><button type='button' id='cancelButton' onclick='ExitPeopleForm()'>&nbsp;Cancel&nbsp;</button>&nbsp;&nbsp<button type='button' id='submitButton' onclick='validateForm()' value='update'>Update Record</button><div style='float:right;'><button type='button' id='deleteButton' onclick='validateDeleteUser()' style='background:red;color:white;'>&nbsp;DELETE USER&nbsp;</button></div></div>	</article>
+	<footer>
+		&copy; 2013-2018 Rogue Intelligence
+	</footer>
+</div>
+        <script src="js/meeter.js"></script>
+</body>
+</html>
+

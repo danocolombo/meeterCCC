@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1" />
+	<meta http-equiv="expires" content="Sun, 01 Jan 2014 00:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+<title>Meeter Web Application</title>
+      <!--  <link rel="stylesheet" type="text/css" href="css/screen_styles.css" />-->
+<!-- <link rel="stylesheet" type="text/css" href="css/screen_layout_large.css" />-->
+<!-- <link rel="stylesheet" type="text/css" media="only screen and (min-width:50px) and (max-width:500px)" href="css/screen_layout_small.css" />-->
+<!-- <link rel="stylesheet" type="text/css" media="only screen and (min-width:501px) and (max-width:800px)" href="css/screen_layout_medium.css" />-->
+
+<link
+	href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+	rel="stylesheet"/>
+<script src="js/jquery/jquery-3.3.1.js" type="text/javascript"></script>
+<script src="js/jquery/jquery-ui.js" type="text/javascript"></script>
+<!-- Javascript -->
+<script type="text/javascript">
+         $(function() {
+            $( "#mtgDate" ).datepicker();
+         });
+      </script>
+<script type="text/javascript" src="js/farinspace/jquery.imgpreload.min.js"></script>
+
+<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		
+   </head>
+   
+   <body>
+      <!-- HTML --> 
+      <p>Enter Date: <input type = "text" id = "mtgDate1"></p>
+      <div class="page">
+		<nav>
+			<a href="meetings.php">Meetings</a> <a href="people.php">People</a> <a
+				href="teams.php">Teams</a> <a href="leadership.php">Leadership</a> <a
+				href="reportlist.php">Reporting</a> <a href="#">ADMIN</a> <a
+				href="logout.php">[ LOGOUT ]</a>
+		</nav>
+		<article>
+			<form id="mtgForm" action="mtgAction.php?Action=New" method="post">
+				<h2 id="formTitle">New Meeting Entry</h2>
+				<div style='float: center'>
+					<table id="formTable">
+						<tr>
+							<td>Test</td>
+							<td><input id="temp" name="junk" size="20"></td>
+						</tr>
+						<tr><td>
+							Date:
+							<td>
+							<input type = "text" id = "mtgDate">
+						</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+		</article>
+		<footer>
+			&copy; 2013-2018 Rogue Intelligence
+		</footer>
+	</div>
+   </body>
+</html>
